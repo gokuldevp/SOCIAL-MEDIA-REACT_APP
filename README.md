@@ -90,3 +90,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Step 4: Porps validation
 1. install the prop-types package `npm i prop-types`
 2. using the propTypes from prop-types package create a propery to validate the props type in home.js
+
+* Step 5: Adding Navbar
+1. Create a Navbar component in the Navbar.js
+2. use the navbar component in the App.js file

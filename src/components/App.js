@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../api";
 import { Home } from "../pages";
-import { Loader } from "."
+import { Loader, Navbar } from "."
 
 function App() {
   // Initialize state variables to manage posts and loading status.
@@ -37,6 +37,7 @@ function App() {
   // Render the main content of the application, including the 'Home' component.
   return (
     <div className="App">
+      <Navbar/>
       <h1>Hello world</h1>
       <Home posts={posts} />
     </div>
