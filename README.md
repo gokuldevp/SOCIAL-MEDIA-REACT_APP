@@ -81,3 +81,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Step 2: Setup the API
 1. Add the api detail in the utils/index.js file
 2. Create function (customFetch) to handle the api in api.index.js file
+
+* Step 3: Adding Home Page and styling it
+1. Create a Home.js file in pages folder
+2. Creaate Loader component in the components folder
+3. style the home page uing home.module.css
+
+* Step 4: Porps validation
+1. install the prop-types package `npm i prop-types`
+2. using the propTypes from prop-types package create a propery to validate the props type in home.js
