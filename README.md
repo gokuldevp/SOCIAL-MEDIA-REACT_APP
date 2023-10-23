@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+========================================================================================
+
+# Social Media App
+* Step 1: Initial setup
+1. create a react project `npx create-react-app <app-name>`
+2. Setup the folders such as api, components, pages, providers, styles, utils
+3. Remove all the unnecessay files and folders
+
+* Step 2: Setup the API
+1. Add the api detail in the utils/index.js file
+2. Create function (customFetch) to handle the api in api.index.js file
