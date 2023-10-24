@@ -94,3 +94,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Step 5: Adding Navbar
 1. Create a Navbar component in the Navbar.js
 2. use the navbar component in the App.js file
+
+* Step 6: Create Comment component
+1. Create a new comment component 
