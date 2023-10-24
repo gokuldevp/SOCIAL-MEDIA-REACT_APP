@@ -5,6 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Login } from "../pages";
 import { Loader, Navbar } from ".";
 
+const ErrorPage = () => {
+  return(
+    <h1>
+      404
+    </h1>
+  )
+}
+
 function App() {
   // Initialize state variables to manage posts and loading status.
   const [posts, setPosts] = useState([]); // State for storing posts
@@ -42,8 +50,9 @@ function App() {
       <Navbar /> {/* Display the Navbar component */}
       <Router>
         <Routes>
-          <Route exact path="/" element={<Home posts={posts} />} /> {/* Render Home component with posts */}
-          <Route exact path="/login" element={<Login />} /> {/* Render Login component */}
+          <Route path="/" element={<Home posts={posts} />} /> {/* Render Home component with posts */}
+          <Route path="/login" element={<Login />} /> {/* Render Login component */}
+          <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </Router>
     </div>
