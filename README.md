@@ -96,4 +96,27 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 2. use the navbar component in the App.js file
 
 * Step 6: Create Comment component
-1. Create a new comment component 
+1. Create a new comment component
+
+## Routing and Auth
+* Step 1: Install `npm i react-router-dom` [doc](https://reactrouter.com/en/main)
+* Step 2: import BrowserRouter as Router, Routes, Route from react-router-dom
+```js
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+```
+* Step 3: User the Router in the jsx
+```js
+  // Render the main content of the application, including the 'Home' and 'Login' components.
+  return (
+    <div className="App">
+      <Navbar /> {/* Display the Navbar component */}
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home posts={posts} />} /> {/* Render Home component with posts */}
+          <Route exact path="/login" element={<Login />} /> {/* Render Login component */}
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+```

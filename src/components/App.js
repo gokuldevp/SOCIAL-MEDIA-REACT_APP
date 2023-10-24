@@ -1,12 +1,14 @@
+// Import necessary modules and components.
 import { useEffect, useState } from "react";
 import { getPosts } from "../api";
-import { Home } from "../pages";
-import { Loader, Navbar } from "."
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home, Login } from "../pages";
+import { Loader, Navbar } from ".";
 
 function App() {
   // Initialize state variables to manage posts and loading status.
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]); // State for storing posts
+  const [loading, setLoading] = useState(true); // State for loading status
 
   // Use the useEffect hook to fetch posts from the API when the component mounts.
   useEffect(() => {
@@ -34,12 +36,16 @@ function App() {
     return <Loader />;
   }
 
-  // Render the main content of the application, including the 'Home' component.
+  // Render the main content of the application, including the 'Home' and 'Login' components.
   return (
     <div className="App">
-      <Navbar/>
-      <h1>Hello world</h1>
-      <Home posts={posts} />
+      <Navbar /> {/* Display the Navbar component */}
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home posts={posts} />} /> {/* Render Home component with posts */}
+          <Route exact path="/login" element={<Login />} /> {/* Render Login component */}
+        </Routes>
+      </Router>
     </div>
   );
 }
