@@ -1,39 +1,40 @@
 import styles from '../styles/navbar.module.css';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.leftDiv}>
-        <a href="/">
+        <Link to="/"> {/* to is user insted of href */}
           <img
             alt=""
             src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
           />
-        </a>
+        </Link>
       </div>
 
       <div className={styles.rightNav}>
         <div className={styles.user}>
-          <a href="/">
+          <Link to="/">
             <img
               src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678130-profile-alt-4-512.png"
               alt=""
               className={styles.userDp}
             />
-          </a>
+          </Link>
           <span>Gokul</span>
         </div>
 
         <div className={styles.navLinks}>
           <ul>
             <li>
-              <a href="/">Log in</a>
+              <Link to="/login">Log in</Link>
             </li>
             <li>
-              <a href="/">Log out</a>
+              <Link to="/logout">Log out</Link>
             </li>
             <li>
-              <a href="/">Register</a>
+              <Link to="/register">Register</Link>
             </li>
           </ul>
         </div>

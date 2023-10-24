@@ -120,3 +120,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   );
 }
 ```
+
+* Step 4: Setting Links:
+- Note:
+1. Links are used to post the React Router: If you're building a single-page application (SPA) using React Router, it's recommended to use the Link component. React Router is designed for client-side routing in SPAs, and the Link component is an integral part of this routing system. It provides a seamless and efficient way to navigate between different views or pages without full page reloads.
+
+2. Preventing Full Page Reloads: The Link component prevents the default behavior of anchor tags, which is to trigger a full page refresh when navigating between pages. This is especially important in SPAs to maintain a smooth user experience.
+
+3. Nested Routing: When dealing with nested routes and complex routing configurations, the Link component makes it easier to handle route changes and maintain application state.
+
+4. Links needed to be added inside the router, we need to import Link import { Link } from "react-router-dom";
+5. eg:
+```jsx
+        <Link to="/">
+          <img
+            alt=""
+            src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
+          />
+        </Link>
+```

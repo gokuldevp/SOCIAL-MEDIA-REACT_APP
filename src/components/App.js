@@ -47,8 +47,8 @@ function App() {
   // Render the main content of the application, including the 'Home' and 'Login' components.
   return (
     <div className="App">
-      <Navbar /> {/* Display the Navbar component */}
       <Router>
+      <Navbar /> {/* Display the Navbar component */}
         <Routes>
           <Route path="/" element={<Home posts={posts} />} /> {/* Render Home component with posts */}
           <Route path="/login" element={<Login />} /> {/* Render Login component */}

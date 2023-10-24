@@ -2,6 +2,7 @@ import styles from '../styles/home.module.css';
 import propTypes from "prop-types"
 import { Comment } from '../components';
 
+
 const Home = ({posts}) => {
   return (
     <div className={styles.postsList}>
