@@ -71,3 +71,20 @@ export const getPosts = (page = 1, limit = 5) => {
         METHOD: "GET"
     });
 }
+
+
+/**
+ * Logs in a user by sending a POST request to the login API endpoint.
+ *
+ * @param {string} email - The user's email address.
+ * @param {string} password - The user's password.
+ *
+ * @returns {Promise} A promise that resolves with the response from the login request.
+ */
+export const login = (email, password) => {
+    return customFetch(API_URLS.login(), {
+      method: 'POST',
+      body: { email, password },
+    });
+  };
+  
