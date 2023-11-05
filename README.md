@@ -145,3 +145,4 @@ Step 5: Setting up login
 2. Create a Login Api handler in in api/index.js
 3. User the api in Login.js and add the required states and functions
 4. Create a Auth Provider for managing authentication, (Hooks is also needed to be created)
+5. update the useProvideAuth, userAuth hooks to manage user authentication

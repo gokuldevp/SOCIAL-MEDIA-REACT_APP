@@ -1,15 +1,14 @@
 // Import the API_URLS, LOCALSTORAGE_TOKEN_KEY from the "../utils" module.
-import { API_URLS,LOCALSTORAGE_TOKEN_KEY } from "../utils";
+import { API_URLS,LOCALSTORAGE_TOKEN_KEY, getFormBody } from "../utils";
 
 // Define a customFetch function to make API requests with optional authentication.
 const customFetch = async (url, { body, ...customConfig }) => {
     // Retrieve the user's authentication token from localStorage.
     const token = window.localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
 
-    // Define the default headers for the HTTP request.
+    // Setting the HTTP request headers with a content type of 'application/x-www-form-urlencoded'.
     const headers = {
-        'content-type': 'application/json',
-        Accept: 'application/json'
+        'content-type': 'application/x-www-form-urlencoded',
     };
 
     // If a user token is available, add it to the headers for authentication.
@@ -26,10 +25,11 @@ const customFetch = async (url, { body, ...customConfig }) => {
         },
     }
 
-    // If a request body is provided, convert it to JSON format.
+    // If a request body is provided, convert it to a URL-encoded form body using the getFormBody function.
     if (body) {
-        config.body = JSON.stringify(body);
+        config.body = getFormBody(body);
     }
+
 
     try {
         // Send the HTTP request using fetch and await the response.

@@ -7,23 +7,30 @@ import styles from '../styles/login.module.css';
 // Importing the login function from the API module.
 import { login } from '../api';
 
+import { useAuth } from '../hooks';
+
 // The Login functional component.
 const Login = () => {
   // Setting up state variables using the useState hook.
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loggingIn, setLoggingIn] = useState(false);
-
-  // Handling form submission.
+  const [email, setEmail] = useState(''); // Initialize 'email' state with an empty string.
+  const [password, setPassword] = useState(''); // Initialize 'password' state with an empty string.
+  const [loggingIn, setLoggingIn] = useState(false); // Initialize 'loggingIn' state with 'false'.
+  
+  const auth = useAuth(); // Get the authentication context using the 'useAuth' hook.
+  
+  /**
+   * Handles the form submission and login process.
+   * @param {Event} e - The form submission event.
+   */
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoggingIn(true);
-
-    // Sending a login request to the API using the imported 'login' function.
-    const response = await login(email, password);
-
-    setLoggingIn(false);
+    e.preventDefault(); // Prevent the default form submission behavior.
+    setLoggingIn(true); // Set 'loggingIn' state to 'true' to indicate a login attempt.
+  
+    const response = await auth.login(email, password); // Attempt to log in using the provided email and password.
+  
+    setLoggingIn(false); // Set 'loggingIn' state back to 'false' after the login attempt is completed.
   };
+  
 
   // Rendering the login form.
   return (
