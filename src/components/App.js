@@ -1,6 +1,6 @@
 // Import necessary modules and components.
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, Login } from "../pages";
+import { Home, Login, Signup } from "../pages";
 import { Loader, Navbar } from ".";
 import { useAuth } from "../hooks";
 
@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home posts={[]} />} /> {/* Render Home component with posts */}
           <Route path="/login" element={<Login />} /> {/* Render Login component */}
+          <Route path="/signup" element={<Signup />} /> {/* Render Login component */}
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </Router>

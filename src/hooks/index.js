@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react"; // Import the useContext, useState hook from React.
-import { login as userLogin } from "../api"; // Import the login function from the '../api' module.
+import { login as userLogin, register } from "../api"; // Import the login function from the '../api' module.
 import { AuthContext } from "../providers/AuthProvider"; // Import the AuthContext from the '../providers/AuthProvider' module.
 import { setItemInLocalStorage, removeItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, getItemFromLocalStorage } from "../utils";
 import { jwtDecode } from "jwt-decode";
@@ -66,7 +66,27 @@ export const useProvideAuth = () => {
       message: response.message
     };
   }
-};
+  };
+
+  // signup function handles user registration
+  const signup = async (name, email, password, confirmPassword) => {
+  // Send a request to the 'register' API endpoint with user information
+  const response = await register(name, email, password, confirmPassword);
+
+  // Check if the registration was successful
+  if (response.success) {
+    // If successful, return a success response
+    return {
+      success: true,
+    };
+  } else {
+    // If there's an error, return a failure response with an error message
+    return {
+      success: false,
+      message: response.message,
+    };
+  }
+ };
 
 
   // Function to handle user logout.
@@ -80,6 +100,7 @@ export const useProvideAuth = () => {
     user,     // The current authenticated user (or null if not authenticated).
     login,    // The function for user userLogin.
     logout,   // The function for user logout.
-    loading   // A loading indicator to track the authentication process.
+    loading,   // A loading indicator to track the authentication process.
+    signup
   };
 };

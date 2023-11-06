@@ -10,6 +10,7 @@ const initialState = {
   login: () => {}, // Placeholder function for login.
   logout: () => {}, // Placeholder function for logout.
   loading: true,  // Loading state is initially set to true.
+  signup: () => {}
 };
 
 // Creating an AuthContext using createContext with the initial state.

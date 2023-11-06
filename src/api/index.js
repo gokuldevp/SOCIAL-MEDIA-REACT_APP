@@ -87,4 +87,16 @@ export const login = (email, password) => {
       body: { email, password },
     });
   };
+
+// Exported function for user registration
+export const register = async (name, email, password, confirmPassword) => {
+    // Call the customFetch function to send a POST request to the registration API endpoint
+    // The API URL is generated using the API_URLS.signup() function.
+    // The request includes the user's name, email, password, and confirmPassword in the request body.
+    return customFetch(API_URLS.signup(), {
+      method: 'POST',
+      body: { name, email, password, confirm_password: confirmPassword },
+    });
+};
+  
   
