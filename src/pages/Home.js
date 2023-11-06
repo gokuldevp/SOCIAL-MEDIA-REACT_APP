@@ -1,9 +1,40 @@
 import styles from '../styles/home.module.css';
 import propTypes from "prop-types"
 import { Comment } from '../components';
+import { useEffect, useState } from 'react';
+import { getPosts, setPosts, setLoading } from '../api';
+import Loader from '../components';
 
 
-const Home = ({posts}) => {
+const Home = () => {
+  // Initialize state variables to manage posts and loading status.
+  const [posts, setPosts] = useState([]); // State for storing posts
+  const [loading, setLoading] = useState(true); // State for loading status
+  
+  useEffect(() => {
+    // This effect runs when the component mounts (due to the empty dependency array `[]`).
+    const fetchPosts = async () => {
+      const response = await getPosts(); // Assuming getPosts is an asynchronous function that fetches posts.
+  
+      if (response.success) {
+        // If the response is successful, update the 'posts' state with the fetched posts.
+        setPosts(response.data.posts);
+      }
+  
+      // Set 'loading' to false regardless of the result of the API call.
+      setLoading(false);
+    };
+  
+    // Call the 'fetchPosts' function to fetch posts when the component mounts.
+    fetchPosts();
+  }, []);
+  
+  if (loading) {
+    // If 'loading' is true, display a loading spinner (assuming the 'Loader' component is defined elsewhere).
+    return <Loader />;
+  }
+  
+
   return (
     <div className={styles.postsList}>
       {posts.map((post) => (

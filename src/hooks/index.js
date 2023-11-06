@@ -1,7 +1,8 @@
-import { useContext, useState } from "react"; // Import the useContext, useState hook from React.
+import { useContext, useState, useEffect } from "react"; // Import the useContext, useState hook from React.
 import { login as userLogin } from "../api"; // Import the login function from the '../api' module.
 import { AuthContext } from "../providers/AuthProvider"; // Import the AuthContext from the '../providers/AuthProvider' module.
-import { setItemInLocalStorage, removeItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY } from "../utils";
+import { setItemInLocalStorage, removeItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, getItemFromLocalStorage } from "../utils";
+import jwt from "jwt-decode"
 
 /**
  * A custom hook that provides access to the authentication context.
@@ -20,29 +21,53 @@ export const useProvideAuth = () => {
   const [user, setUser] = useState(null); // Initially, the user is set to null.
   const [loading, setLoading] = useState(true); // Initially, the loading state is set to true.
 
-  // Function to handle user ;ogin with email and password.
-  const login = async (email, password) => {
-    // Implement the login functionality here.
-    // This function should authenticate the user and update the 'user' state accordingly.
-
-    const response = await userLogin(email, password);
-
-    if (response.success){
-      setUser(response.data.user);
-      setItemInLocalStorage(
-        LOCALSTORAGE_TOKEN_KEY,
-        response.data.token ? response.data.token : null
-      );
-      return {
-        success:true
-      }
-    } else {
-      return {
-        success:false,
-        message: response.message
-      }
+  useEffect(() => {
+    // Retrieve the user's token from local storage.
+    const userToken = getItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
+  
+    if (userToken) {
+      // If a token exists in local storage, decode it using JWT.
+      const user = jwt(userToken);
+  
+      // Set the user state with the decoded user object.
+      setUser(user);
     }
-  };
+  
+    // Set the loading state to false to indicate that the component has finished its initial work.
+    setLoading(false);
+  }, []);
+  
+
+  // Function to handle user login with email and password.
+  const login = async (email, password) => {
+  // Implement the login functionality here.
+
+  // Call the 'userLogin' function to authenticate the user.
+  const response = await userLogin(email, password);
+
+  if (response.success) {
+    // If authentication is successful, update the 'user' state.
+    setUser(response.data.user);
+
+    // Store the user's token in the local storage.
+    setItemInLocalStorage(
+      LOCALSTORAGE_TOKEN_KEY,
+      response.data.token ? response.data.token : null
+    );
+
+    // Return a success object with a success flag.
+    return {
+      success: true
+    };
+  } else {
+    // If authentication fails, return an object with a success flag and an error message.
+    return {
+      success: false,
+      message: response.message
+    };
+  }
+};
+
 
   // Function to handle user logout.
   const logout = () => {

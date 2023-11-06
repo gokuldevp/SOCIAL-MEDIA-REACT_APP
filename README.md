@@ -149,4 +149,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 * Step 6: Making the user presisting
 1. Create utils functions (setItemInLocalStorage, getItemFromLocalStorage, removeItemFromLocalStorage)
-2. Add the utils functions in 
+2. Add the utils functions in Hooks
+
+* Step 7: Decoding token
+1. Install `npm i jwt-decode`
+2. in hooks/index.js use useEffect for retrieving a user's token from local storage, decoding it using JSON Web Tokens (JWT), and setting the user state based on the decoded token.
+3. Use teh 
