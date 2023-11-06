@@ -36,27 +36,29 @@ const Login = () => {
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       <span className={styles.loginSignupHeader}>Log In</span>
-
+  
       <div className={styles.field}>
-        {/* Input field for the user's email */}
+        {/* Input field for the user's email with autocomplete attribute */}
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="username"  // Suggests a username for autocomplete
         />
       </div>
-
+  
       <div className={styles.field}>
-        {/* Input field for the user's password */}
+        {/* Input field for the user's password with autocomplete attribute */}
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"  // Suggests a password for autocomplete
         />
       </div>
-
+  
       <div className={styles.field}>
         {/* Submit button that is disabled when logging in */}
         <button disabled={loggingIn}>
@@ -65,6 +67,7 @@ const Login = () => {
       </div>
     </form>
   );
+  
 };
 
 // Exporting the Login component.

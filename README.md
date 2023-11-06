@@ -140,9 +140,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
         </Link>
 ```
 
-Step 5: Setting up login
+* Step 5: Setting up login
 1. Create a Login page with login from
 2. Create a Login Api handler in in api/index.js
 3. User the api in Login.js and add the required states and functions
 4. Create a Auth Provider for managing authentication, (Hooks is also needed to be created)
 5. update the useProvideAuth, userAuth hooks to manage user authentication
+
+* Step 6: Making the user presisting
+1. Create utils functions (setItemInLocalStorage, getItemFromLocalStorage, removeItemFromLocalStorage)
+2. Add the utils functions in 

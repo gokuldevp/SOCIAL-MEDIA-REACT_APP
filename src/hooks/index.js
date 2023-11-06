@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"; // Import the useContext, useState hook from React.
 import { login as userLogin } from "../api"; // Import the login function from the '../api' module.
 import { AuthContext } from "../providers/AuthProvider"; // Import the AuthContext from the '../providers/AuthProvider' module.
+import { setItemInLocalStorage, removeItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY } from "../utils";
 
 /**
  * A custom hook that provides access to the authentication context.
@@ -28,6 +29,10 @@ export const useProvideAuth = () => {
 
     if (response.success){
       setUser(response.data.user);
+      setItemInLocalStorage(
+        LOCALSTORAGE_TOKEN_KEY,
+        response.data.token ? response.data.token : null
+      );
       return {
         success:true
       }
@@ -41,8 +46,8 @@ export const useProvideAuth = () => {
 
   // Function to handle user logout.
   const logout = () => {
-    // Implement the logout functionality here.
-    // This function should clear the user session and update the 'user' state accordingly.
+    setUser(null);
+    removeItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
   };
 
   // Returning an object with user data, userLogin, logout functions, and loading state.
