@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react"; // Import the useContex
 import { login as userLogin } from "../api"; // Import the login function from the '../api' module.
 import { AuthContext } from "../providers/AuthProvider"; // Import the AuthContext from the '../providers/AuthProvider' module.
 import { setItemInLocalStorage, removeItemFromLocalStorage, LOCALSTORAGE_TOKEN_KEY, getItemFromLocalStorage } from "../utils";
-import jwt from "jwt-decode"
+import { jwtDecode } from "jwt-decode";
 
 /**
  * A custom hook that provides access to the authentication context.
@@ -27,7 +27,7 @@ export const useProvideAuth = () => {
   
     if (userToken) {
       // If a token exists in local storage, decode it using JWT.
-      const user = jwt(userToken);
+      const user = jwtDecode(userToken);
   
       // Set the user state with the decoded user object.
       setUser(user);

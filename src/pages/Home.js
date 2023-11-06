@@ -3,7 +3,7 @@ import propTypes from "prop-types"
 import { Comment } from '../components';
 import { useEffect, useState } from 'react';
 import { getPosts, setPosts, setLoading } from '../api';
-import Loader from '../components';
+import {Loader} from '../components';
 
 
 const Home = () => {

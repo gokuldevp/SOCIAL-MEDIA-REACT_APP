@@ -154,4 +154,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 * Step 7: Decoding token
 1. Install `npm i jwt-decode`
 2. in hooks/index.js use useEffect for retrieving a user's token from local storage, decoding it using JSON Web Tokens (JWT), and setting the user state based on the decoded token.
-3. Use teh 
+
+* Step 7: useAuth for Navbar:
+1. add the useAuth in Navbar component
+2. Make the navbar item available based on the user login status
